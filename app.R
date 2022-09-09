@@ -12,7 +12,7 @@ ui <- fluidPage(
   theme = bs_theme(
     bg = paste0('#',probe::palette_feather['Powder']),
     fg = '#000000',
-    base_font = font_google("Roboto", local = TRUE)
+    base_font = c("Helvetica", "Arial", "sans-serif") # matches corcept.com
   ),
   titlePanel(
     "Which artists share the most playlists with a given artist?"
@@ -52,6 +52,10 @@ server <- function(input, output, session) {
         plot_bgcolor=paste0('#',probe::palette_feather['Powder']),
         xaxis = list(title=''),
         yaxis = list(title='')
+      ) %>% layout(
+        font = list(
+          family = "Helvetica, Arial, sans-serif"
+        )
       )
   })
 }
